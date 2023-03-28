@@ -1,0 +1,156 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;0,900;1,700&display=swap");
+
+@mixin font-weight($weight) {
+    $weights: (
+      thin: 100,
+      light: 300,
+      normal: 400,
+      medium: 500,
+      bold: 700,
+      black: 900,
+    );
+    
+    $output: $weight;
+    @if map-has-key($weights, $weight) {
+      $output: map-get($weights, $weight);
+    }
+    
+    font-weight: $output;
+  }
+
+    
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+  $base-color: #134880;
+  $secondary-color: #484A4C;
+  
+  
+  @mixin header(){
+    width: 80vw;
+    height: 100px;
+    background-color: #DDDDDD;
+    margin-left: 20vw;
+  }
+  @mixin grid(){
+    display: grid;
+    grid-template-columns: repeat(6, auto) ;
+    grid-template-rows: 200px ;
+    row-gap: 5px;
+    width: 1200px;
+  }
+
+  @mixin button-style{
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    border: 1px solid #DDDDDD;
+    border-radius: 5px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  @mixin button-hover{
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid #134880; 
+  }
+  .wrap {
+    width: 100vw;
+    height: 425px;
+    display: flex; 
+  
+  }
+
+
+  .slider-up{
+    @include grid();
+  }
+
+  .slider-down{
+    @include grid();
+    margin-top: 8px;
+    position: relative;
+    left: -190px;
+  }
+
+  .sliderd-buttons{
+    
+    display: grid;
+    grid-template-columns: 1130px auto ;
+    grid-template-rows: 200px ;
+    
+  }
+  
+  .container{
+    width: 100vw;
+    max-width: 940px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .header, .footer {
+    @include header();
+  }
+  
+ .sliders{  
+  width: 80vw;
+  img{
+    height: 200px;
+    width: auto;
+    border-radius: 10px;
+  }
+}
+  .text-box{
+    width: 300px;
+    font-family: "Source Sans Pro", sans-serif;
+    letter-spacing: -0.2px;
+  }
+  .content{
+    
+    color: $secondary-color;
+    margin-top: 20px;
+    font-size: 18px;
+    line-height: 26px;
+  }
+  .title{
+    @include font-weight(bold);
+    color: $base-color;
+    font-size: 32px;
+    line-height: 38px;
+  }
+  .buttons{
+    width: 60px;
+    height: 130px;
+    margin-top: 8px;
+    
+  }
+  .right-button{
+    @include button-style();
+    background-image: url(arrow-gray-right.png);  //Nije mi prikazivalo strelicu kad sam stavio path(./Assets/arrow-gray-right.png), pa sam morao stavit slike strelica u mapu s css-om 
+  }
+
+  .left-button{
+    @include button-style();
+    position: relative;
+    top: 10px;
+    background-image: url(arrow-gray-left.png);
+    
+  }
+ 
+  .right-button:hover {
+    background-image: url(arrow-blue-right.png);
+    @include button-hover();
+    }
+    
+  .left-button:hover {
+    background-image: url(arrow-blue-left.png);
+    @include button-hover();
+      }
+  
+  
